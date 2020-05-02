@@ -37,3 +37,16 @@
     backup: yes
     block: |
       {{ sshd_local_content }}
+
+- name: Start and enable fail2ban service
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: yes
+
+- name: Start and enable firewalld service
+  systemd:
+    name: firewalld
+    state: started
+    enabled: yes
+
