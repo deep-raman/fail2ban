@@ -10,3 +10,18 @@
     state: present
     update_cache: yes
   with_items: "{{ fail2ban_packages }}"
+
+- name: Copy fail2ban conf
+  copy:
+    src: "{{ fail2ban_conf }}"
+    dst: "{{ fail2ban_local }}"
+    remote_src: yes
+
+- name: Ignore localhost ip
+  lineinfile:
+    path: "{{ fail2ban_local }}"
+    regexp: '^#ignoreip'
+    line: "ignoreip = 127.0.0.1/8"
+    state: present
+
+  
