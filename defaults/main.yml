@@ -2,4 +2,6 @@ fail2ban_packages:
   - fail2ban
   - fail2ban-systemd
 
+fail2ban_conf: /etc/fail2ban/jail.conf
+fail2ban_local: /etc/fail2ban/jail.local
 
