@@ -14,7 +14,7 @@
 - name: Copy fail2ban conf
   copy:
     src: "{{ fail2ban_conf }}"
-    dst: "{{ fail2ban_local }}"
+    dest: "{{ fail2ban_local }}"
     remote_src: yes
 
 - name: Ignore localhost ip
