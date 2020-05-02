@@ -4,4 +4,12 @@ fail2ban_packages:
 
 fail2ban_conf: /etc/fail2ban/jail.conf
 fail2ban_local: /etc/fail2ban/jail.local
-
+sshd_local_file: /etc/fail2ban/jail.d/sshd.local
+sshd_local_content: |
+  [sshd]
+  enabled = true
+  port = ssh
+  action = firewallcmd-ipset
+  logpath = %(sshd_log)s
+  maxretry = 5
+  bantime = 86400
