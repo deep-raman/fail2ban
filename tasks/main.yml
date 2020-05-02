@@ -24,4 +24,16 @@
     line: "ignoreip = 127.0.0.1/8"
     state: present
 
-  
+- name: Create sshd.local file
+  file:
+    path: "{{ sshd_local_file }}"
+    state: touch
+
+- name: Copy content to sshd.local file
+  blockinfile:
+    dest: "{{ sshd_local_file }}"
+    marker: "#{mark} FAIL2BAN : ANSIBLE MANAGED BLOCK"
+    state: present
+    backup: yes
+    block: |
+      {{ sshd_local_content }}
