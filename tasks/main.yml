@@ -1,0 +1,12 @@
+- name: Install epel repository
+  yum:
+    name: epel-release
+    state: present
+    update_cache: yes
+
+- name: Install fail2ban packages
+  yum:
+    name: "{{ fail2ban_packages }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ fail2ban_packages }}"
